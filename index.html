@@ -12,7 +12,7 @@
     --bg3: #1a1b26;
     --border: rgba(255,255,255,0.07);
     --text: #e8e9f0;
-    --text-muted: #FFFFFF;
+    --text-muted: #f6f6f6;
     --accent: #f5a623;
     --accent2: #e8528a;
     --accent3: #4ecdc4;
@@ -27,8 +27,6 @@
     display: flex;
     flex-direction: column;
   }
-
-  /* ─── HEADER ─── */
   header {
     padding: 28px 40px 20px;
     border-bottom: 1px solid var(--border);
@@ -47,622 +45,208 @@
     line-height: 1.1;
   }
   .header-title h1 span { color: var(--accent); }
-  .header-sub {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 6px;
-    font-weight: 300;
-    letter-spacing: 0.3px;
-  }
-  .header-stats {
-    display: flex;
-    gap: 28px;
-    align-items: center;
-    flex-shrink: 0;
-  }
+  .header-sub { font-size: 13px; color: var(--text-muted); margin-top: 6px; font-weight: 300; }
+  .header-stats { display: flex; gap: 28px; align-items: center; flex-shrink: 0; }
   .hstat { text-align: right; }
-  .hstat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-  }
+  .hstat-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--accent); line-height: 1; }
   .hstat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 3px; }
-
-  /* ─── LAYOUT ─── */
-  .layout {
-    display: flex;
-    flex: 1;
-    min-height: 0;
-  }
-
-  /* ─── SIDEBAR ─── */
+  .layout { display: flex; flex: 1; min-height: 0; }
   aside {
-    width: 280px;
-    flex-shrink: 0;
-    background: var(--bg2);
-    border-right: 1px solid var(--border);
-    overflow-y: scroll;
-    padding: 16px 0;
-    height: 80vh;
+    width: 280px; flex-shrink: 0; background: var(--bg2);
+    border-right: 1px solid var(--border); overflow-y: scroll; padding: 0px 0 30px;height: 85vh;
   }
   .sidebar-section-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--text-muted);
-    padding: 12px 20px 6px;
-    font-weight: 600;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--text-muted); padding: 14px 20px 6px; font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid;
   }
+  .sidebar-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .career-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 9px 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    color: var(--text-muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    transition: all 0.15s;
-    border-left: 3px solid transparent;
-    gap: 8px;
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 9px 20px; background: none; border: none; cursor: pointer;
+    text-align: left; color: var(--text-muted); font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 400; transition: all 0.15s;
+    border-left: 3px solid transparent; gap: 8px;
   }
   .career-btn:hover { background: rgba(255,255,255,0.04); color: var(--text); }
-  .career-btn.active {
-    color: #fff;
-    background: rgba(245,166,35,0.1);
-    border-left-color: var(--accent);
-    font-weight: 600;
-  }
+  .career-btn.active { color: #fff; background: rgba(245,166,35,0.1); border-left-color: var(--accent); font-weight: 600; }
   .career-btn .cn { flex: 1; line-height: 1.3; }
-  .career-badge {
-    font-size: 11px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 20px;
-    padding: 2px 7px;
-    color: var(--text-muted);
-    flex-shrink: 0;
-    font-weight: 500;
-  }
+  .career-badge { font-size: 11px; background: rgba(255,255,255,0.06); border-radius: 20px; padding: 2px 7px; color: var(--text-muted); flex-shrink: 0; font-weight: 500; }
   .career-btn.active .career-badge { background: rgba(245,166,35,0.2); color: var(--accent); }
-
-  /* ─── MAIN ─── */
-  main {
-    flex: 1;
-    overflow-y: auto;
-    padding: 36px 40px;
-    min-width: 0;
-  }
-
-  .career-header {
-    margin-bottom: 32px;
-    animation: fadeUp 0.3s ease;
-  }
-  .career-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 3vw, 40px);
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.1;
-    margin-bottom: 6px;
-  }
-  .career-name em { font-style: normal; color: var(--accent);display: block; font-size: 20px; }
-  .career-meta {
-    font-size: 13px;
-    color: var(--text-muted);
-    display: flex;
-    gap: 16px;
-    align-items: center;
-  }
-  .career-meta .dot { color: var(--border); }
-
-  /* ─── KPI GRID ─── */
-  .kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 28px;
-    animation: fadeUp 0.35s ease 0.05s both;
-  }
-  .kpi-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 22px;
-    position: relative;
-    overflow: hidden;
-  }
-  .kpi-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    border-radius: 12px 12px 0 0;
-  }
-  .kpi-age::before { background: var(--accent); }
-  .kpi-exp::before { background: var(--accent2); }
+  main { flex: 1; overflow-y: auto; padding: 36px 40px; min-width: 0; }
+  .career-header { margin-bottom: 32px; animation: fadeUp 0.3s ease; }
+  .career-name { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3vw, 40px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 6px; }
+  .career-name em { font-style: normal; color: var(--accent); font-size: 20px; display: block; }
+  .career-pill { display: inline-block; font-size: 11px; background: rgba(245,166,35,0.15); color: var(--accent); border: 1px solid rgba(245,166,35,0.3); border-radius: 20px; padding: 3px 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; animation: fadeUp 0.35s ease 0.05s both; }
+  .kpi-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; position: relative; overflow: hidden; }
+  .kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: 12px 12px 0 0; }
+  .kpi-age::before  { background: var(--accent); }
+  .kpi-exp::before  { background: var(--accent2); }
   .kpi-know::before { background: var(--accent3); }
-  .kpi-rec::before { background: var(--accent4); }
+  .kpi-rec::before  { background: var(--accent4); }
   .kpi-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); font-weight: 600; margin-bottom: 10px; }
-  .kpi-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-  }
-  .kpi-age .kpi-value { color: var(--accent); }
-  .kpi-exp .kpi-value { color: var(--accent2); }
+  .kpi-value { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; line-height: 1; color: #fff; }
+  .kpi-age  .kpi-value { color: var(--accent); }
+  .kpi-exp  .kpi-value { color: var(--accent2); }
   .kpi-know .kpi-value { color: var(--accent3); }
-  .kpi-rec .kpi-value { color: var(--accent4); }
+  .kpi-rec  .kpi-value { color: var(--accent4); }
   .kpi-unit { font-size: 16px; font-weight: 400; }
   .kpi-desc { font-size: 12px; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
-
-  /* ─── BOTTOM GRID ─── */
-  .bottom-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 20px;
-    animation: fadeUp 0.35s ease 0.1s both;
-  }
-
-  .panel {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-  }
-  .panel-title {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-    font-weight: 600;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .panel-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
+  .bottom-grid { display: grid; grid-template-columns: 1fr 1.55fr; gap: 20px; animation: fadeUp 0.35s ease 0.1s both; align-items: start; }
+  .panel { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+  .panel-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+  .panel-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   /* palabras */
-  .palabras-list { display: flex; flex-direction: column; gap: 14px; }
-  .palabra-item {}
-  .palabra-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
-  .palabra-name { font-size: 15px; font-weight: 600; color: #fff; }
-  .palabra-pct { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--accent); }
-  .bar-track { height: 6px; background: rgba(255,255,255,0.07); border-radius: 3px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 0.6s cubic-bezier(.22,.61,.36,1); }
-
+  .palabras-list { display: flex; flex-direction: column; gap: 11px; }
+  .palabra-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; gap: 8px; }
+  .palabra-name { font-size: 13.5px; font-weight: 600; color: #fff; }
+  .palabra-name.custom { color: var(--text); font-weight: 500; font-size: 12.5px; }
+  .palabra-right { display: flex; align-items: baseline; gap: 6px; flex-shrink: 0; }
+  .palabra-pct { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; }
+  .palabra-n { font-size: 11px; color: var(--text-muted); }
+  .bar-track { height: 5px; background: rgba(255,255,255,0.07); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 0.65s cubic-bezier(.22,.61,.36,1); }
+  .pbar-0{background:var(--accent)}.pbar-1{background:var(--accent2)}.pbar-2{background:var(--accent3)}.pbar-3{background:var(--accent4)}.pbar-4{background:#64b5f6}.pbar-5{background:#81c784}.pbar-6{background:#ffb74d}.pbar-o{background:rgba(255,255,255,0.22)}
+  .pc-0{color:var(--accent)}.pc-1{color:var(--accent2)}.pc-2{color:var(--accent3)}.pc-3{color:var(--accent4)}.pc-4{color:#64b5f6}.pc-5{color:#81c784}.pc-6{color:#ffb74d}.pc-o{color:var(--text-muted)}
+  .palabras-divider { margin: 10px 0 6px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(255,255,255,0.2); display: flex; align-items: center; gap: 8px; }
+  .palabras-divider::before,.palabras-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   /* futuro */
   .futuro-list { display: flex; flex-direction: column; gap: 10px; }
   .futuro-item { display: flex; align-items: center; gap: 12px; }
-  .futuro-label { font-size: 13px; color: var(--text); flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .futuro-bar-track { flex: 0 0 180px; height: 8px; background: rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden; }
-  .futuro-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s cubic-bezier(.22,.61,.36,1); }
-  .futuro-pct { font-size: 13px; font-weight: 600; color: var(--text-muted); flex-shrink: 0; width: 38px; text-align: right; }
-
-  .futuro-colors {
-    --c0: #f5a623;
-    --c1: #e8528a;
-    --c2: #4ecdc4;
-    --c3: #a78bfa;
-    --c4: #64b5f6;
-    --c5: #81c784;
-  }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* scrollbar */
-  ::-webkit-scrollbar { width: 5px; height: 5px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
-
-  /* responsive */
-  @media (max-width: 900px) {
-    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-    .bottom-grid { grid-template-columns: 1fr; }
-    aside { width: 240px; }
-    main { padding: 24px 20px; }
-    header { padding: 20px; }
-    .header-stats { display: none; }
-  }
-  @media (max-width: 600px) {
-    .layout { flex-direction: column; }
-    aside { width: 100%; height: auto; max-height: 200px; border-right: none; border-bottom: 1px solid var(--border); }
-  }
-
-  .note-sm { font-size: 11px; color: var(--text-muted); margin-top: 8px; font-style: italic; }
-
-  /* highlight current career in header */
-  .career-pill {
-    display: inline-block;
-    font-size: 11px;
-    background: rgba(245,166,35,0.15);
-    color: var(--accent);
-    border: 1px solid rgba(245,166,35,0.3);
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+  .futuro-label { font-size: 12.5px; color: var(--text); flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .futuro-bar-track { flex: 0 0 160px; height: 7px; background: rgba(255,255,255,0.07); border-radius: 4px; overflow: hidden; }
+  .futuro-bar-fill { height: 100%; border-radius: 4px; transition: width 0.65s cubic-bezier(.22,.61,.36,1); }
+  .futuro-pct { font-size: 13px; font-weight: 600; flex-shrink: 0; width: 38px; text-align: right; }
+  .note-sm { font-size: 11px; color: var(--text-muted); margin-top: 10px; font-style: italic; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+  ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.2)}
+  @media(max-width:900px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.bottom-grid{grid-template-columns:1fr}aside{width:240px}main{padding:24px 20px}header{padding:20px}.header-stats{display:none}}
+  @media(max-width:600px){.layout{flex-direction:column}aside{width:100%;height:auto;max-height:200px;border-right:none;border-bottom:1px solid var(--border)}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-title">
     <h1>Análisis por <span>Carrera</span></h1>
     <div class="header-sub">Encuesta a ingresantes — Facultad de Diseño y Comunicación · Universidad de Palermo · Marzo 2026</div>
   </div>
   <div class="header-stats">
-    <div class="hstat">
-      <div class="hstat-num">1.213</div>
-      <div class="hstat-label">Respuestas totales</div>
-    </div>
-    <div class="hstat">
-      <div class="hstat-num">26</div>
-      <div class="hstat-label">Carreras</div>
-    </div>
+    <div class="hstat"><div class="hstat-num">1.213</div><div class="hstat-label">Respuestas totales</div></div>
+    <div class="hstat"><div class="hstat-num">26</div><div class="hstat-label">Carreras</div></div>
   </div>
 </header>
-
 <div class="layout">
   <aside id="sidebar"></aside>
   <main id="main"></main>
 </div>
 
 <script>
+const STANDARD = ['Joven','Tradicional','Seria','Creativa','Internacional','Profesional','Amigable'];
+const FCOLORS   = ['#f5a623','#e8528a','#4ecdc4','#a78bfa','#64b5f6','#81c784','#ffb74d'];
+const PBARS     = ['pbar-0','pbar-1','pbar-2','pbar-3','pbar-4','pbar-5','pbar-6'];
+const PCS       = ['pc-0','pc-1','pc-2','pc-3','pc-4','pc-5','pc-6'];
+
 const data = {
-  "Actuación Profesional": {
-    full: "Actuación Profesional (Actor Profesional)",
-    n: 8, avg_age: 21.5, pct_otra: 50.0, pct_conoce: 25.0, pct_recom: 12.5,
-    top_palabras: [{palabra:"Creativa",pct:75.0},{palabra:"Internacional",pct:62.5}],
-    futuro: [
-      {opcion:"Trabajando en otro país",pct:87.5},
-      {opcion:"Emprendiendo mi proyecto propio",pct:50.0},
-      {opcion:"Estudiando una maestría o doctorado",pct:37.5},
-      {opcion:"Trabajando en una empresa internacional",pct:12.5}
-    ]
-  },
-  "Comunicación de Moda": {
-    full: "Comunicación de Moda",
-    n: 25, avg_age: 19.0, pct_otra: 24.0, pct_conoce: 84.0, pct_recom: 36.0,
-    top_palabras: [{palabra:"Creativa",pct:88.0},{palabra:"Joven",pct:52.0}],
-    futuro: [
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:60.0},
-      {opcion:"Trabajando en otro país",pct:52.0},
-      {opcion:"Trabajando en una empresa internacional",pct:44.0},
-      {opcion:"Emprendiendo mi proyecto propio",pct:36.0},
-      {opcion:"Estudiando una maestría o doctorado",pct:12.0}
-    ]
-  },
-  "Dirección Creativa Publicitaria": {
-    full: "Dirección Creativa Publicitaria",
-    n: 13, avg_age: 20.8, pct_otra: 46.2, pct_conoce: 76.9, pct_recom: 53.8,
-    top_palabras: [{palabra:"Creativa",pct:100.0},{palabra:"Joven",pct:53.8}],
-    futuro: [
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:92.3},
-      {opcion:"Emprendiendo mi proyecto propio",pct:76.9},
-      {opcion:"Trabajando en una empresa internacional",pct:46.2},
-      {opcion:"Trabajando en otro país",pct:23.1},
-      {opcion:"Estudiando una maestría o doctorado",pct:7.7}
-    ]
-  },
-  "Dirección de Comunicación": {
-    full: "Dirección de Comunicación (Publicidad + Relaciones Públicas)",
-    n: 65, avg_age: 18.5, pct_otra: 30.8, pct_conoce: 87.7, pct_recom: 49.2,
-    top_palabras: [{palabra:"Creativa",pct:92.3},{palabra:"Joven",pct:46.2}],
-    futuro: [
-      {opcion:"Trabajando en una empresa internacional",pct:72.3},
-      {opcion:"Emprendiendo mi proyecto propio",pct:52.3},
-      {opcion:"Trabajando en otro país",pct:46.2},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:43.1},
-      {opcion:"Estudiando una maestría o doctorado",pct:9.2}
-    ]
-  },
-  "Diseño Digital": {
-    full: "Diseño Digital (Diseño de Imagen y Sonido)",
-    n: 18, avg_age: 19.3, pct_otra: 11.1, pct_conoce: 77.8, pct_recom: 33.3,
-    top_palabras: [{palabra:"Creativa",pct:77.8},{palabra:"Profesional",pct:50.0}],
-    futuro: [
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:66.7},
-      {opcion:"Emprendiendo mi proyecto propio",pct:50.0},
-      {opcion:"Trabajando en una empresa internacional",pct:38.9},
-      {opcion:"Trabajando en otro país",pct:38.9}
-    ]
-  },
-  "Diseño Gráfico": {
-    full: "Diseño Gráfico",
-    n: 89, avg_age: 20.2, pct_otra: 24.7, pct_conoce: 69.7, pct_recom: 60.7,
-    top_palabras: [{palabra:"Creativa",pct:92.1},{palabra:"Profesional",pct:59.6}],
-    futuro: [
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:73.0},
-      {opcion:"Trabajando en una empresa internacional",pct:55.1},
-      {opcion:"Emprendiendo mi proyecto propio",pct:47.2},
-      {opcion:"Trabajando en otro país",pct:41.6},
-      {opcion:"Estudiando una maestría o doctorado",pct:6.7}
-    ]
-  },
-  "Diseño Industrial": {
-    full: "Diseño Industrial",
-    n: 71, avg_age: 19.2, pct_otra: 14.1, pct_conoce: 66.2, pct_recom: 56.3,
-    top_palabras: [{palabra:"Creativa",pct:90.1},{palabra:"Amigable",pct:52.1}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:57.7},
-      {opcion:"Trabajando en una empresa internacional",pct:54.9},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:40.8},
-      {opcion:"Trabajando en otro país",pct:35.2},
-      {opcion:"Estudiando una maestría o doctorado",pct:7.0}
-    ]
-  },
-  "Diseño de Ilustración": {
-    full: "Diseño de Ilustración",
-    n: 46, avg_age: 20.5, pct_otra: 23.9, pct_conoce: 58.7, pct_recom: 45.7,
-    top_palabras: [{palabra:"Creativa",pct:76.1},{palabra:"Profesional",pct:56.5}],
-    futuro: [
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:82.6},
-      {opcion:"Emprendiendo mi proyecto propio",pct:63.0},
-      {opcion:"Trabajando en una empresa internacional",pct:43.5},
-      {opcion:"Trabajando en otro país",pct:37.0}
-    ]
-  },
-  "Diseño de Interiores": {
-    full: "Diseño de Interiores",
-    n: 119, avg_age: 18.8, pct_otra: 16.8, pct_conoce: 73.1, pct_recom: 47.9,
-    top_palabras: [{palabra:"Creativa",pct:89.1},{palabra:"Amigable",pct:44.5}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:70.6},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:51.3},
-      {opcion:"Trabajando en otro país",pct:38.7},
-      {opcion:"Trabajando en una empresa internacional",pct:32.8},
-      {opcion:"Estudiando una maestría o doctorado",pct:7.6}
-    ]
-  },
-  "Diseño de Moda": {
-    full: "Diseño de Moda (Diseño Textil e Indumentaria)",
-    n: 210, avg_age: 18.8, pct_otra: 11.9, pct_conoce: 73.3, pct_recom: 61.9,
-    top_palabras: [{palabra:"Creativa",pct:87.1},{palabra:"Amigable",pct:54.8}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:73.3},
-      {opcion:"Trabajando en otro país",pct:51.4},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:51.0},
-      {opcion:"Trabajando en una empresa internacional",pct:40.0},
-      {opcion:"Estudiando una maestría o doctorado",pct:7.1}
-    ]
-  },
-  "Diseño de Música y Sonido": {
-    full: "Diseño de Música y Sonido (Creación Sonora + Producción Musical)",
-    n: 16, avg_age: 18.9, pct_otra: 25.0, pct_conoce: 68.8, pct_recom: 31.2,
-    top_palabras: [{palabra:"Creativa",pct:87.5},{palabra:"Joven",pct:62.5}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:93.8},
-      {opcion:"Trabajando en otro país",pct:50.0},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:43.8},
-      {opcion:"Trabajando en una empresa internacional",pct:12.5},
-      {opcion:"Estudiando una maestría o doctorado",pct:6.2}
-    ]
-  },
-  "Lic. en Com. Audiovisual": {
-    full: "Licenciatura en Comunicación Audiovisual",
-    n: 62, avg_age: 18.3, pct_otra: 19.4, pct_conoce: 69.4, pct_recom: 48.4,
-    top_palabras: [{palabra:"Creativa",pct:82.3},{palabra:"Amigable",pct:43.5}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:64.5},
-      {opcion:"Trabajando en otro país",pct:51.6},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:48.4},
-      {opcion:"Trabajando en una empresa internacional",pct:33.9},
-      {opcion:"Estudiando una maestría o doctorado",pct:9.7}
-    ]
-  },
-  "Lic. en Comunicación Digital": {
-    full: "Licenciatura en Comunicación Digital",
-    n: 60, avg_age: 20.6, pct_otra: 38.3, pct_conoce: 68.3, pct_recom: 48.3,
-    top_palabras: [{palabra:"Creativa",pct:85.0},{palabra:"Profesional",pct:45.0}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:58.3},
-      {opcion:"Trabajando en una empresa internacional",pct:56.7},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:45.0},
-      {opcion:"Trabajando en otro país",pct:35.0},
-      {opcion:"Estudiando una maestría o doctorado",pct:10.0}
-    ]
-  },
-  "Lic. en Creación Sonora": {
-    full: "Licenciatura en Creación Sonora",
-    n: 11, avg_age: 18.7, pct_otra: 18.2, pct_conoce: 72.7, pct_recom: 36.4,
-    top_palabras: [{palabra:"Creativa",pct:63.6},{palabra:"Profesional",pct:54.5}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:81.8},
-      {opcion:"Trabajando en otro país",pct:45.5},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:27.3},
-      {opcion:"Trabajando en una empresa internacional",pct:27.3},
-      {opcion:"Estudiando una maestría o doctorado",pct:9.1}
-    ]
-  },
-  "Lic. en Dir. Cinematográfica": {
-    full: "Licenciatura en Dirección Cinematográfica",
-    n: 14, avg_age: 20.2, pct_otra: 21.4, pct_conoce: 42.9, pct_recom: 28.6,
-    top_palabras: [{palabra:"Creativa",pct:71.4},{palabra:"Joven",pct:50.0}],
-    futuro: [
-      {opcion:"Trabajando en otro país",pct:71.4},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:42.9},
-      {opcion:"Emprendiendo mi proyecto propio",pct:35.7},
-      {opcion:"Trabajando en una empresa internacional",pct:14.3},
-      {opcion:"Estudiando una maestría o doctorado",pct:7.1}
-    ]
-  },
-  "Lic. en Diseño (CCC)": {
-    full: "Licenciatura en Diseño (CCC)",
-    n: 6, avg_age: 18.5, pct_otra: 16.7, pct_conoce: 66.7, pct_recom: 50.0,
-    top_palabras: [{palabra:"Creativa",pct:100.0},{palabra:"Joven",pct:50.0}],
-    futuro: [
-      {opcion:"Trabajando en una empresa internacional",pct:83.3},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:66.7},
-      {opcion:"Emprendiendo mi proyecto propio",pct:33.3},
-      {opcion:"Estudiando una maestría o doctorado",pct:33.3},
-      {opcion:"Trabajando en otro país",pct:33.3}
-    ]
-  },
-  "Lic. en Diseño (D+N+T)": {
-    full: "Licenciatura en Diseño (Diseño + Negocios + Tecnología)",
-    n: 59, avg_age: 18.6, pct_otra: 22.0, pct_conoce: 72.9, pct_recom: 54.2,
-    top_palabras: [{palabra:"Creativa",pct:86.4},{palabra:"Profesional",pct:40.7}],
-    futuro: [
-      {opcion:"Trabajando en una empresa internacional",pct:71.2},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:57.6},
-      {opcion:"Emprendiendo mi proyecto propio",pct:49.2},
-      {opcion:"Trabajando en otro país",pct:40.7},
-      {opcion:"Estudiando una maestría o doctorado",pct:20.3}
-    ]
-  },
-  "Lic. en Fotografía": {
-    full: "Licenciatura en Fotografía",
-    n: 6, avg_age: 23.0, pct_otra: 16.7, pct_conoce: 16.7, pct_recom: 33.3,
-    top_palabras: [{palabra:"Creativa",pct:66.7},{palabra:"Profesional",pct:66.7}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:66.7},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:66.7},
-      {opcion:"Trabajando en una empresa internacional",pct:50.0},
-      {opcion:"Trabajando en otro país",pct:16.7}
-    ]
-  },
-  "Lic. en Gestión de Proyectos": {
-    full: "Licenciatura en Gestión de Proyectos de Diseño y Comunicación",
-    n: 1, avg_age: 30.0, pct_otra: 100.0, pct_conoce: 0.0, pct_recom: 0.0,
-    top_palabras: [{palabra:"Seria",pct:100.0},{palabra:"Creativa",pct:100.0}],
-    futuro: [
-      {opcion:"Trabajando en una empresa internacional",pct:100.0},
-      {opcion:"Estudiando una maestría o doctorado",pct:100.0},
-      {opcion:"Trabajando en otro país",pct:100.0}
-    ]
-  },
-  "Lic. en Negocios de Diseño": {
-    full: "Licenciatura en Negocios de Diseño y Comunicación",
-    n: 5, avg_age: 21.0, pct_otra: 40.0, pct_conoce: 20.0, pct_recom: 40.0,
-    top_palabras: [{palabra:"Creativa",pct:60.0},{palabra:"Profesional",pct:60.0}],
-    futuro: [
-      {opcion:"Trabajando en otro país",pct:80.0},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:60.0},
-      {opcion:"Trabajando en una empresa internacional",pct:40.0},
-      {opcion:"Estudiando una maestría o doctorado",pct:40.0},
-      {opcion:"Emprendiendo mi proyecto propio",pct:20.0}
-    ]
-  },
-  "Lic. en Publicidad": {
-    full: "Licenciatura en Publicidad",
-    n: 86, avg_age: 19.2, pct_otra: 25.6, pct_conoce: 77.9, pct_recom: 62.8,
-    top_palabras: [{palabra:"Creativa",pct:93.0},{palabra:"Joven",pct:44.2}],
-    futuro: [
-      {opcion:"Trabajando en una empresa internacional",pct:61.6},
-      {opcion:"Emprendiendo mi proyecto propio",pct:41.9},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:40.7},
-      {opcion:"Trabajando en otro país",pct:36.0},
-      {opcion:"Estudiando una maestría o doctorado",pct:14.0}
-    ]
-  },
-  "Lic. en Relaciones Públicas": {
-    full: "Licenciatura en Relaciones Públicas",
-    n: 10, avg_age: 19.3, pct_otra: 30.0, pct_conoce: 70.0, pct_recom: 60.0,
-    top_palabras: [{palabra:"Creativa",pct:70.0},{palabra:"Joven",pct:50.0}],
-    futuro: [
-      {opcion:"Trabajando en una empresa internacional",pct:80.0},
-      {opcion:"Trabajando en otro país",pct:60.0},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:40.0},
-      {opcion:"Emprendiendo mi proyecto propio",pct:30.0}
-    ]
-  },
-  "Marketing de la Moda": {
-    full: "Marketing de la Moda",
-    n: 35, avg_age: 19.9, pct_otra: 34.3, pct_conoce: 54.3, pct_recom: 48.6,
-    top_palabras: [{palabra:"Creativa",pct:77.1},{palabra:"Profesional",pct:45.7}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:57.1},
-      {opcion:"Trabajando en otro país",pct:57.1},
-      {opcion:"Trabajando en una empresa internacional",pct:37.1},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:31.4},
-      {opcion:"Estudiando una maestría o doctorado",pct:17.1}
-    ]
-  },
-  "Organización de Eventos": {
-    full: "Organización de Eventos",
-    n: 25, avg_age: 19.1, pct_otra: 24.0, pct_conoce: 72.0, pct_recom: 48.0,
-    top_palabras: [{palabra:"Creativa",pct:72.0},{palabra:"Joven",pct:48.0}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:64.0},
-      {opcion:"Trabajando en otro país",pct:36.0},
-      {opcion:"Trabajando en una empresa internacional",pct:24.0},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:24.0},
-      {opcion:"Estudiando una maestría o doctorado",pct:4.0}
-    ]
-  },
-  "Producción Musical": {
-    full: "Producción Musical",
-    n: 47, avg_age: 20.2, pct_otra: 29.8, pct_conoce: 57.4, pct_recom: 14.9,
-    top_palabras: [{palabra:"Creativa",pct:87.2},{palabra:"Profesional",pct:63.8}],
-    futuro: [
-      {opcion:"Emprendiendo mi proyecto propio",pct:83.0},
-      {opcion:"Trabajando en otro país",pct:42.6},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:31.9},
-      {opcion:"Trabajando en una empresa internacional",pct:19.1},
-      {opcion:"Estudiando una maestría o doctorado",pct:12.8}
-    ]
-  },
-  "Producción de Modas": {
-    full: "Producción de Modas",
-    n: 106, avg_age: 19.2, pct_otra: 18.9, pct_conoce: 72.6, pct_recom: 44.3,
-    top_palabras: [{palabra:"Creativa",pct:90.6},{palabra:"Amigable",pct:43.4}],
-    futuro: [
-      {opcion:"Trabajando en otro país",pct:64.2},
-      {opcion:"Como creativo/a o diseñador/a freelance",pct:58.5},
-      {opcion:"Trabajando en una empresa internacional",pct:45.3},
-      {opcion:"Emprendiendo mi proyecto propio",pct:43.4},
-      {opcion:"Estudiando una maestría o doctorado",pct:7.5}
-    ]
-  }
+  "Actuación Profesional":{full:"Actuación Profesional (Actor Profesional)",n:8,avg_age:21.5,pct_otra:50.0,pct_conoce:25.0,pct_recom:12.5,
+    palabras:[{p:"Creativa",v:75.0,n:6},{p:"Internacional",v:62.5,n:5},{p:"Joven",v:25.0,n:2},{p:"Seria",v:25.0,n:2},{p:"Amigable",v:25.0,n:2},{p:"Profesional",v:12.5,n:1}],
+    futuro:[{o:"Trabajando en otro país",v:87.5},{o:"Emprendiendo mi proyecto propio",v:50.0},{o:"Estudiando una maestría o doctorado",v:37.5},{o:"Trabajando en una empresa internacional",v:12.5}]},
+  "Comunicación de Moda":{full:"Comunicación de Moda",n:25,avg_age:19.0,pct_otra:24.0,pct_conoce:84.0,pct_recom:36.0,
+    palabras:[{p:"Creativa",v:88.0,n:22},{p:"Joven",v:52.0,n:13},{p:"Amigable",v:52.0,n:13},{p:"Profesional",v:48.0,n:12},{p:"Internacional",v:12.0,n:3},{p:"Seria",v:8.0,n:2},{p:"Tradicional",v:4.0,n:1}],
+    futuro:[{o:"Como creativo/a o diseñador/a freelance",v:60.0},{o:"Trabajando en otro país",v:52.0},{o:"Trabajando en una empresa internacional",v:44.0},{o:"Emprendiendo mi proyecto propio",v:36.0},{o:"Estudiando una maestría o doctorado",v:12.0}]},
+  "Dirección Creativa Publicitaria":{full:"Dirección Creativa Publicitaria",n:13,avg_age:20.8,pct_otra:46.2,pct_conoce:76.9,pct_recom:53.8,
+    palabras:[{p:"Creativa",v:100.0,n:13},{p:"Joven",v:53.8,n:7},{p:"Amigable",v:30.8,n:4},{p:"Profesional",v:23.1,n:3},{p:"Internacional",v:15.4,n:2}],
+    futuro:[{o:"Como creativo/a o diseñador/a freelance",v:92.3},{o:"Emprendiendo mi proyecto propio",v:76.9},{o:"Trabajando en una empresa internacional",v:46.2},{o:"Trabajando en otro país",v:23.1},{o:"Estudiando una maestría o doctorado",v:7.7}]},
+  "Dirección de Comunicación":{full:"Dirección de Comunicación (Publicidad + Relaciones Públicas)",n:65,avg_age:18.5,pct_otra:30.8,pct_conoce:87.7,pct_recom:49.2,
+    palabras:[{p:"Creativa",v:92.3,n:60},{p:"Joven",v:46.2,n:30},{p:"Amigable",v:43.1,n:28},{p:"Profesional",v:40.0,n:26},{p:"Internacional",v:21.5,n:14},{p:"Tradicional",v:6.2,n:4},{p:"Seria",v:3.1,n:2},{p:"Innovadora",v:3.1,n:2},{p:"Me gusta aunque siento que las clases son muy de secundario.",v:1.5,n:1},{p:"Práctica",v:1.5,n:1}],
+    futuro:[{o:"Trabajando en una empresa internacional",v:72.3},{o:"Emprendiendo mi proyecto propio",v:52.3},{o:"Trabajando en otro país",v:46.2},{o:"Como creativo/a o diseñador/a freelance",v:43.1},{o:"Estudiando una maestría o doctorado",v:9.2},{o:"Trabajando en la empresa familiar",v:1.5}]},
+  "Diseño Digital":{full:"Diseño Digital (Diseño de Imagen y Sonido)",n:18,avg_age:19.3,pct_otra:11.1,pct_conoce:77.8,pct_recom:33.3,
+    palabras:[{p:"Creativa",v:77.8,n:14},{p:"Profesional",v:50.0,n:9},{p:"Amigable",v:50.0,n:9},{p:"Joven",v:33.3,n:6},{p:"Tradicional",v:11.1,n:2},{p:"Internacional",v:11.1,n:2}],
+    futuro:[{o:"Como creativo/a o diseñador/a freelance",v:66.7},{o:"Emprendiendo mi proyecto propio",v:50.0},{o:"Trabajando en una empresa internacional",v:38.9},{o:"Trabajando en otro país",v:38.9}]},
+  "Diseño Gráfico":{full:"Diseño Gráfico",n:89,avg_age:20.2,pct_otra:24.7,pct_conoce:69.7,pct_recom:60.7,
+    palabras:[{p:"Creativa",v:92.1,n:82},{p:"Profesional",v:59.6,n:53},{p:"Amigable",v:48.3,n:43},{p:"Joven",v:34.8,n:31},{p:"Internacional",v:19.1,n:17},{p:"Seria",v:15.7,n:14},{p:"Tradicional",v:2.2,n:2},{p:"Buena dinámica",v:1.1,n:1},{p:"Moderna",v:1.1,n:1},{p:"Flexible",v:1.1,n:1},{p:"Cómoda y práctica",v:1.1,n:1}],
+    futuro:[{o:"Como creativo/a o diseñador/a freelance",v:73.0},{o:"Trabajando en una empresa internacional",v:55.1},{o:"Emprendiendo mi proyecto propio",v:47.2},{o:"Trabajando en otro país",v:41.6},{o:"Estudiando una maestría o doctorado",v:6.7}]},
+  "Diseño Industrial":{full:"Diseño Industrial",n:71,avg_age:19.2,pct_otra:14.1,pct_conoce:66.2,pct_recom:56.3,
+    palabras:[{p:"Creativa",v:90.1,n:64},{p:"Amigable",v:52.1,n:37},{p:"Profesional",v:40.8,n:29},{p:"Joven",v:32.4,n:23},{p:"Internacional",v:29.6,n:21},{p:"Seria",v:12.7,n:9},{p:"Tradicional",v:4.2,n:3},{p:"Confusa",v:1.4,n:1},{p:"Adaptada",v:1.4,n:1},{p:"Práctica",v:1.4,n:1}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:57.7},{o:"Trabajando en una empresa internacional",v:54.9},{o:"Como creativo/a o diseñador/a freelance",v:40.8},{o:"Trabajando en otro país",v:35.2},{o:"Estudiando una maestría o doctorado",v:7.0}]},
+  "Diseño de Ilustración":{full:"Diseño de Ilustración",n:46,avg_age:20.5,pct_otra:23.9,pct_conoce:58.7,pct_recom:45.7,
+    palabras:[{p:"Creativa",v:76.1,n:35},{p:"Profesional",v:56.5,n:26},{p:"Amigable",v:50.0,n:23},{p:"Internacional",v:41.3,n:19},{p:"Joven",v:39.1,n:18},{p:"Seria",v:10.9,n:5},{p:"Tradicional",v:4.3,n:2},{p:"Divertida",v:2.2,n:1},{p:"Social",v:2.2,n:1},{p:"Piola",v:2.2,n:1}],
+    futuro:[{o:"Como creativo/a o diseñador/a freelance",v:82.6},{o:"Emprendiendo mi proyecto propio",v:63.0},{o:"Trabajando en una empresa internacional",v:43.5},{o:"Trabajando en otro país",v:37.0}]},
+  "Diseño de Interiores":{full:"Diseño de Interiores",n:119,avg_age:18.8,pct_otra:16.8,pct_conoce:73.1,pct_recom:47.9,
+    palabras:[{p:"Creativa",v:89.1,n:106},{p:"Amigable",v:44.5,n:53},{p:"Profesional",v:42.0,n:50},{p:"Joven",v:28.6,n:34},{p:"Internacional",v:18.5,n:22},{p:"Seria",v:9.2,n:11},{p:"Tradicional",v:5.0,n:6},{p:"Oportunidades",v:0.8,n:1},{p:"Organizada",v:0.8,n:1},{p:"Innovadora",v:0.8,n:1}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:70.6},{o:"Como creativo/a o diseñador/a freelance",v:51.3},{o:"Trabajando en otro país",v:38.7},{o:"Trabajando en una empresa internacional",v:32.8},{o:"Estudiando una maestría o doctorado",v:7.6}]},
+  "Diseño de Moda":{full:"Diseño de Moda (Diseño Textil e Indumentaria)",n:210,avg_age:18.8,pct_otra:11.9,pct_conoce:73.3,pct_recom:61.9,
+    palabras:[{p:"Creativa",v:87.1,n:183},{p:"Amigable",v:54.8,n:115},{p:"Profesional",v:49.5,n:104},{p:"Joven",v:32.4,n:68},{p:"Internacional",v:23.3,n:49},{p:"Seria",v:8.1,n:17},{p:"Tradicional",v:0.5,n:1},{p:"Innovadora",v:1.0,n:2},{p:"Buenos medios de comunicación",v:0.5,n:1}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:73.3},{o:"Trabajando en otro país",v:51.4},{o:"Como creativo/a o diseñador/a freelance",v:51.0},{o:"Trabajando en una empresa internacional",v:40.0},{o:"Estudiando una maestría o doctorado",v:7.1}]},
+  "Diseño de Música y Sonido":{full:"Diseño de Música y Sonido (Creación Sonora + Producción Musical)",n:16,avg_age:18.9,pct_otra:25.0,pct_conoce:68.8,pct_recom:31.2,
+    palabras:[{p:"Creativa",v:87.5,n:14},{p:"Joven",v:62.5,n:10},{p:"Profesional",v:50.0,n:8},{p:"Amigable",v:37.5,n:6},{p:"Internacional",v:31.2,n:5},{p:"Seria",v:25.0,n:4}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:93.8},{o:"Trabajando en otro país",v:50.0},{o:"Como creativo/a o diseñador/a freelance",v:43.8},{o:"Trabajando en una empresa internacional",v:12.5},{o:"Estudiando una maestría o doctorado",v:6.2}]},
+  "Lic. en Com. Audiovisual":{full:"Licenciatura en Comunicación Audiovisual",n:62,avg_age:18.3,pct_otra:19.4,pct_conoce:69.4,pct_recom:48.4,
+    palabras:[{p:"Creativa",v:82.3,n:51},{p:"Amigable",v:43.5,n:27},{p:"Joven",v:40.3,n:25},{p:"Profesional",v:33.9,n:21},{p:"Internacional",v:17.7,n:11},{p:"Seria",v:9.7,n:6},{p:"Innovadora",v:1.6,n:1},{p:"Moderna",v:1.6,n:1},{p:"Interesante",v:1.6,n:1},{p:"Confusa",v:1.6,n:1}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:64.5},{o:"Trabajando en otro país",v:51.6},{o:"Como creativo/a o diseñador/a freelance",v:48.4},{o:"Trabajando en una empresa internacional",v:33.9},{o:"Estudiando una maestría o doctorado",v:9.7}]},
+  "Lic. en Comunicación Digital":{full:"Licenciatura en Comunicación Digital",n:60,avg_age:20.6,pct_otra:38.3,pct_conoce:68.3,pct_recom:48.3,
+    palabras:[{p:"Creativa",v:85.0,n:51},{p:"Profesional",v:45.0,n:27},{p:"Amigable",v:35.0,n:21},{p:"Joven",v:30.0,n:18},{p:"Internacional",v:25.0,n:15},{p:"Seria",v:5.0,n:3},{p:"Moderna",v:1.7,n:1},{p:"Innovadora",v:1.7,n:1},{p:"Tradicional",v:1.7,n:1}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:58.3},{o:"Trabajando en una empresa internacional",v:56.7},{o:"Como creativo/a o diseñador/a freelance",v:45.0},{o:"Trabajando en otro país",v:35.0},{o:"Estudiando una maestría o doctorado",v:10.0}]},
+  "Lic. en Creación Sonora":{full:"Licenciatura en Creación Sonora",n:11,avg_age:18.7,pct_otra:18.2,pct_conoce:72.7,pct_recom:36.4,
+    palabras:[{p:"Creativa",v:63.6,n:7},{p:"Profesional",v:54.5,n:6},{p:"Amigable",v:54.5,n:6},{p:"Joven",v:45.5,n:5},{p:"Internacional",v:36.4,n:4},{p:"Seria",v:27.3,n:3},{p:"Práctica",v:9.1,n:1}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:81.8},{o:"Trabajando en otro país",v:45.5},{o:"Como creativo/a o diseñador/a freelance",v:27.3},{o:"Trabajando en una empresa internacional",v:27.3},{o:"Estudiando una maestría o doctorado",v:9.1}]},
+  "Lic. en Dir. Cinematográfica":{full:"Licenciatura en Dirección Cinematográfica",n:14,avg_age:20.2,pct_otra:21.4,pct_conoce:42.9,pct_recom:28.6,
+    palabras:[{p:"Creativa",v:71.4,n:10},{p:"Joven",v:50.0,n:7},{p:"Amigable",v:42.9,n:6},{p:"Internacional",v:21.4,n:3},{p:"Profesional",v:14.3,n:2},{p:"Seria",v:7.1,n:1},{p:"Tradicional",v:7.1,n:1}],
+    futuro:[{o:"Trabajando en otro país",v:71.4},{o:"Como creativo/a o diseñador/a freelance",v:42.9},{o:"Emprendiendo mi proyecto propio",v:35.7},{o:"Trabajando en una empresa internacional",v:14.3},{o:"Estudiando una maestría o doctorado",v:7.1}]},
+  "Lic. en Diseño (CCC)":{full:"Licenciatura en Diseño (CCC)",n:6,avg_age:18.5,pct_otra:16.7,pct_conoce:66.7,pct_recom:50.0,
+    palabras:[{p:"Creativa",v:100.0,n:6},{p:"Joven",v:50.0,n:3},{p:"Profesional",v:50.0,n:3},{p:"Amigable",v:16.7,n:1},{p:"Seria",v:16.7,n:1},{p:"Internacional",v:16.7,n:1}],
+    futuro:[{o:"Trabajando en una empresa internacional",v:83.3},{o:"Como creativo/a o diseñador/a freelance",v:66.7},{o:"Emprendiendo mi proyecto propio",v:33.3},{o:"Estudiando una maestría o doctorado",v:33.3},{o:"Trabajando en otro país",v:33.3}]},
+  "Lic. en Diseño (D+N+T)":{full:"Licenciatura en Diseño (Diseño + Negocios + Tecnología)",n:59,avg_age:18.6,pct_otra:22.0,pct_conoce:72.9,pct_recom:54.2,
+    palabras:[{p:"Creativa",v:86.4,n:51},{p:"Profesional",v:40.7,n:24},{p:"Amigable",v:32.2,n:19},{p:"Joven",v:22.0,n:13},{p:"Internacional",v:18.6,n:11},{p:"Tradicional",v:8.5,n:5},{p:"Seria",v:5.1,n:3},{p:"Diseño",v:1.7,n:1},{p:"Libre",v:1.7,n:1},{p:"Eficiente",v:1.7,n:1}],
+    futuro:[{o:"Trabajando en una empresa internacional",v:71.2},{o:"Como creativo/a o diseñador/a freelance",v:57.6},{o:"Emprendiendo mi proyecto propio",v:49.2},{o:"Trabajando en otro país",v:40.7},{o:"Estudiando una maestría o doctorado",v:20.3}]},
+  "Lic. en Fotografía":{full:"Licenciatura en Fotografía",n:6,avg_age:23.0,pct_otra:16.7,pct_conoce:16.7,pct_recom:33.3,
+    palabras:[{p:"Creativa",v:66.7,n:4},{p:"Profesional",v:66.7,n:4},{p:"Joven",v:50.0,n:3},{p:"Amigable",v:50.0,n:3},{p:"Internacional",v:50.0,n:3},{p:"Tradicional",v:16.7,n:1}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:66.7},{o:"Como creativo/a o diseñador/a freelance",v:66.7},{o:"Trabajando en una empresa internacional",v:50.0},{o:"Trabajando en otro país",v:16.7}]},
+  "Lic. en Gestión de Proyectos":{full:"Licenciatura en Gestión de Proyectos de Diseño y Comunicación",n:1,avg_age:30.0,pct_otra:100.0,pct_conoce:0.0,pct_recom:0.0,
+    palabras:[{p:"Seria",v:100.0,n:1},{p:"Creativa",v:100.0,n:1},{p:"Internacional",v:100.0,n:1},{p:"Profesional",v:100.0,n:1},{p:"De nivel",v:100.0,n:1}],
+    futuro:[{o:"Trabajando en una empresa internacional",v:100.0},{o:"Estudiando una maestría o doctorado",v:100.0},{o:"Trabajando en otro país",v:100.0}]},
+  "Lic. en Negocios de Diseño":{full:"Licenciatura en Negocios de Diseño y Comunicación",n:5,avg_age:21.0,pct_otra:40.0,pct_conoce:20.0,pct_recom:40.0,
+    palabras:[{p:"Creativa",v:60.0,n:3},{p:"Profesional",v:60.0,n:3},{p:"Amigable",v:60.0,n:3},{p:"Joven",v:40.0,n:2},{p:"Seria",v:20.0,n:1}],
+    futuro:[{o:"Trabajando en otro país",v:80.0},{o:"Como creativo/a o diseñador/a freelance",v:60.0},{o:"Trabajando en una empresa internacional",v:40.0},{o:"Estudiando una maestría o doctorado",v:40.0},{o:"Emprendiendo mi proyecto propio",v:20.0}]},
+  "Lic. en Publicidad":{full:"Licenciatura en Publicidad",n:86,avg_age:19.2,pct_otra:25.6,pct_conoce:77.9,pct_recom:62.8,
+    palabras:[{p:"Creativa",v:93.0,n:80},{p:"Joven",v:44.2,n:38},{p:"Profesional",v:41.9,n:36},{p:"Amigable",v:33.7,n:29},{p:"Internacional",v:23.3,n:20},{p:"Seria",v:10.5,n:9},{p:"Tradicional",v:2.3,n:2},{p:"Innovadora",v:1.2,n:1},{p:"Moderna",v:1.2,n:1},{p:"Con proyección",v:1.2,n:1}],
+    futuro:[{o:"Trabajando en una empresa internacional",v:61.6},{o:"Emprendiendo mi proyecto propio",v:41.9},{o:"Como creativo/a o diseñador/a freelance",v:40.7},{o:"Trabajando en otro país",v:36.0},{o:"Estudiando una maestría o doctorado",v:14.0}]},
+  "Lic. en Relaciones Públicas":{full:"Licenciatura en Relaciones Públicas",n:10,avg_age:19.3,pct_otra:30.0,pct_conoce:70.0,pct_recom:60.0,
+    palabras:[{p:"Creativa",v:70.0,n:7},{p:"Joven",v:50.0,n:5},{p:"Profesional",v:50.0,n:5},{p:"Amigable",v:30.0,n:3},{p:"Seria",v:10.0,n:1},{p:"Internacional",v:10.0,n:1}],
+    futuro:[{o:"Trabajando en una empresa internacional",v:80.0},{o:"Trabajando en otro país",v:60.0},{o:"Como creativo/a o diseñador/a freelance",v:40.0},{o:"Emprendiendo mi proyecto propio",v:30.0}]},
+  "Marketing de la Moda":{full:"Marketing de la Moda",n:35,avg_age:19.9,pct_otra:34.3,pct_conoce:54.3,pct_recom:48.6,
+    palabras:[{p:"Creativa",v:77.1,n:27},{p:"Profesional",v:45.7,n:16},{p:"Joven",v:42.9,n:15},{p:"Amigable",v:40.0,n:14},{p:"Internacional",v:14.3,n:5},{p:"Seria",v:11.4,n:4},{p:"Tradicional",v:5.7,n:2}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:57.1},{o:"Trabajando en otro país",v:57.1},{o:"Trabajando en una empresa internacional",v:37.1},{o:"Como creativo/a o diseñador/a freelance",v:31.4},{o:"Estudiando una maestría o doctorado",v:17.1}]},
+  "Organización de Eventos":{full:"Organización de Eventos",n:25,avg_age:19.1,pct_otra:24.0,pct_conoce:72.0,pct_recom:48.0,
+    palabras:[{p:"Creativa",v:72.0,n:18},{p:"Joven",v:48.0,n:12},{p:"Profesional",v:44.0,n:11},{p:"Amigable",v:40.0,n:10},{p:"Internacional",v:20.0,n:5},{p:"Seria",v:12.0,n:3},{p:"Distinta a otras",v:4.0,n:1}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:64.0},{o:"Trabajando en otro país",v:36.0},{o:"Trabajando en una empresa internacional",v:24.0},{o:"Como creativo/a o diseñador/a freelance",v:24.0},{o:"Estudiando una maestría o doctorado",v:4.0}]},
+  "Producción Musical":{full:"Producción Musical",n:47,avg_age:20.2,pct_otra:29.8,pct_conoce:57.4,pct_recom:14.9,
+    palabras:[{p:"Creativa",v:87.2,n:41},{p:"Profesional",v:63.8,n:30},{p:"Amigable",v:48.9,n:23},{p:"Internacional",v:27.7,n:13},{p:"Joven",v:27.7,n:13},{p:"Seria",v:14.9,n:7},{p:"Tradicional",v:2.1,n:1},{p:"Vanguardistas",v:2.1,n:1}],
+    futuro:[{o:"Emprendiendo mi proyecto propio",v:83.0},{o:"Trabajando en otro país",v:42.6},{o:"Como creativo/a o diseñador/a freelance",v:31.9},{o:"Trabajando en una empresa internacional",v:19.1},{o:"Estudiando una maestría o doctorado",v:12.8}]},
+  "Producción de Modas":{full:"Producción de Modas",n:106,avg_age:19.2,pct_otra:18.9,pct_conoce:72.6,pct_recom:44.3,
+    palabras:[{p:"Creativa",v:90.6,n:96},{p:"Amigable",v:43.4,n:46},{p:"Profesional",v:33.0,n:35},{p:"Joven",v:31.1,n:33},{p:"Internacional",v:21.7,n:23},{p:"Seria",v:4.7,n:5},{p:"Tradicional",v:2.8,n:3},{p:"Innovadora",v:0.9,n:1},{p:"Moderna",v:0.9,n:1},{p:"Innovador",v:0.9,n:1}],
+    futuro:[{o:"Trabajando en otro país",v:64.2},{o:"Como creativo/a o diseñador/a freelance",v:58.5},{o:"Trabajando en una empresa internacional",v:45.3},{o:"Emprendiendo mi proyecto propio",v:43.4},{o:"Estudiando una maestría o doctorado",v:7.5}]}
 };
 
-const futuroColors = ['#f5a623','#e8528a','#4ecdc4','#a78bfa','#64b5f6','#81c784'];
+const groups = {
+  'Moda':                  ['Diseño de Moda','Producción de Modas','Marketing de la Moda','Comunicación de Moda'],
+  'Diseño':                ['Diseño Gráfico','Diseño de Interiores','Diseño Industrial','Lic. en Diseño (D+N+T)','Diseño de Ilustración','Diseño Digital'],
+  'Comunicación':          ['Dirección de Comunicación','Dirección Creativa Publicitaria','Lic. en Publicidad','Lic. en Comunicación Digital','Lic. en Relaciones Públicas','Organización de Eventos'],
+  'Audiovisual':           ['Lic. en Com. Audiovisual','Lic. en Dir. Cinematográfica','Lic. en Fotografía','Actuación Profesional','Producción Musical','Diseño de Música y Sonido','Lic. en Creación Sonora'],
+  'Ciclo Complementación': ['Lic. en Diseño (CCC)','Lic. en Negocios de Diseño','Lic. en Gestión de Proyectos']
+};
 
+// ─── BUILD SIDEBAR
+const sidebar = document.getElementById('sidebar');
+const mainEl  = document.getElementById('main');
 let currentKey = null;
 
-// Build sidebar
-const sidebar = document.getElementById('sidebar');
-const mainEl = document.getElementById('main');
-
-// Group by area (simple heuristic)
-const groups = {
-  'Moda': ['Diseño de Moda','Producción de Modas','Marketing de la Moda','Comunicación de Moda'],
-  'Diseño': ['Diseño de Interiores','Diseño Gráfico','Diseño Industrial','Lic. en Diseño (D+N+T)','Diseño de Ilustración','Diseño Digital','Diseño de Música y Sonido','Lic. en Diseño (CCC)','Lic. en Fotografía'],
-  'Comunicación': ['Lic. en Publicidad','Dirección de Comunicación','Lic. en Com. Audiovisual','Lic. en Comunicación Digital','Producción Musical','Organización de Eventos','Lic. en Dir. Cinematográfica','Dirección Creativa Publicitaria','Lic. en Creación Sonora','Lic. en Relaciones Públicas','Actuación Profesional','Lic. en Negocios de Diseño','Lic. en Gestión de Proyectos']
-};
-  /* CCC:
-  Lic Negocios
-  
-  */
-
-Object.entries(groups).forEach(([groupName, keys]) => {
-  const label = document.createElement('div');
-  label.className = 'sidebar-section-label';
-  label.textContent = groupName;
-  sidebar.appendChild(label);
-
+Object.entries(groups).forEach(([gName, keys]) => {
+  const lbl = document.createElement('div');
+  lbl.className = 'sidebar-section-label';
+  lbl.textContent = gName;
+  sidebar.appendChild(lbl);
   keys.forEach(k => {
     if (!data[k]) return;
     const btn = document.createElement('button');
@@ -674,28 +258,37 @@ Object.entries(groups).forEach(([groupName, keys]) => {
   });
 });
 
+// ─── SHOW CAREER
 function showCareer(key) {
-  if (currentKey) {
-    document.getElementById('btn-' + currentKey)?.classList.remove('active');
-  }
+  if (currentKey) document.getElementById('btn-' + currentKey)?.classList.remove('active');
   currentKey = key;
-  document.getElementById('btn-' + key)?.classList.add('active');
-  document.getElementById('btn-' + key)?.scrollIntoView({behavior:'smooth', block:'nearest'});
+  const btn = document.getElementById('btn-' + key);
+  btn?.classList.add('active');
+  btn?.scrollIntoView({behavior:'smooth', block:'nearest'});
 
   const d = data[key];
   const isSmall = d.n < 15;
 
+  // Separate standard vs custom palabras
+  const stdP = d.palabras.filter(x => STANDARD.includes(x.p)).sort((a,b) => b.v - a.v);
+  const cusP = d.palabras.filter(x => !STANDARD.includes(x.p));
+
+  let palHTML = stdP.map((x,i) => palaItem(x, PBARS[i]||'pbar-o', PCS[i]||'pc-o', false)).join('');
+  if (cusP.length) {
+    palHTML += `<div class="palabras-divider">otras respuestas</div>`;
+    palHTML += cusP.map(x => palaItem(x,'pbar-o','pc-o',true)).join('');
+  }
+
   mainEl.innerHTML = `
     <div class="career-header">
-      <div style="margin-bottom:10px"><span class="career-pill">${d.n} respuestas - Ingreso 2026${isSmall ? ' · Muestra pequeña' : ''}</span></div>
-      <div class="career-name">${formatName(d.full)}</div>
+      <span class="career-pill">${d.n} respuesta${d.n!==1?'s':''}${isSmall?' · Muestra pequeña':''}  - Ingreso 2026</span>
+      <div class="career-name">${fmt(d.full)}</div>
     </div>
-
     <div class="kpi-grid">
       <div class="kpi-card kpi-age">
         <div class="kpi-label">Edad promedio</div>
         <div class="kpi-value">${d.avg_age}<span class="kpi-unit"> años</span></div>
-        <div class="kpi-desc">Promedio de los ingresantes a esta carrera</div>
+        <div class="kpi-desc">Promedio de edad de los ingresantes</div>
       </div>
       <div class="kpi-card kpi-exp">
         <div class="kpi-label">Estudios previos</div>
@@ -713,61 +306,48 @@ function showCareer(key) {
         <div class="kpi-desc">Recibieron una recomendación de la Facultad</div>
       </div>
     </div>
-
     <div class="bottom-grid">
       <div class="panel">
-        <div class="panel-title">Top 2 palabras con que identifican a la Facultad</div>
-        <div class="palabras-list">
-          ${d.top_palabras.map((p,i) => `
-            <div class="palabra-item">
-              <div class="palabra-header">
-                <span class="palabra-name">${p.palabra}</span>
-                <span class="palabra-pct">${p.pct}%</span>
-              </div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width:0%" data-width="${p.pct}%"></div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-        <div class="note-sm">% calculado sobre el total de respuestas de la carrera (n=${d.n})</div>
+        <div class="panel-title">Palabras con que identifican a la Facultad</div>
+        <div class="palabras-list">${palHTML}</div>
+        <div class="note-sm">% sobre el total de respuestas de la carrera (n=${d.n}) · múltiple opción</div>
       </div>
-
-      <div class="panel futuro-colors">
+      <div class="panel">
         <div class="panel-title">¿Cómo se ven en el futuro?</div>
         <div class="futuro-list">
-          ${d.futuro.map((f,i) => `
+          ${d.futuro.map((f,i)=>`
             <div class="futuro-item">
-              <div class="futuro-label" title="${f.opcion}">${f.opcion}</div>
-              <div class="futuro-bar-track">
-                <div class="futuro-bar-fill" style="width:0%; background:${futuroColors[i] || '#888'}" data-width="${f.pct}%"></div>
-              </div>
-              <div class="futuro-pct" style="color:${futuroColors[i] || '#888'}">${f.pct}%</div>
-            </div>
-          `).join('')}
+              <div class="futuro-label" title="${f.o}">${f.o}</div>
+              <div class="futuro-bar-track"><div class="futuro-bar-fill" style="width:0%;background:${FCOLORS[i]||'#888'}" data-width="${f.v}%"></div></div>
+              <div class="futuro-pct" style="color:${FCOLORS[i]||'#888'}">${f.v}%</div>
+            </div>`).join('')}
         </div>
-        <div class="note-sm">% calculado sobre el total de respuestas de la carrera — múltiple opción</div>
+        <div class="note-sm">% sobre el total de respuestas de la carrera · múltiple opción</div>
       </div>
     </div>
-    ${isSmall ? '<p style="margin-top:16px;font-size:12px;color:var(--text-muted);font-style:italic;">⚠ Esta carrera tiene menos de 15 respuestas. Los porcentajes deben interpretarse con cautela.</p>' : ''}
+    ${isSmall?`<p style="margin-top:16px;font-size:12px;color:var(--text-muted);font-style:italic;">⚠ Menos de 15 respuestas. Interpretar con cautela.</p>`:''}
   `;
 
-  // Animate bars after paint
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      mainEl.querySelectorAll('[data-width]').forEach(el => {
-        el.style.width = el.getAttribute('data-width');
-      });
-    });
-  });
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    mainEl.querySelectorAll('[data-width]').forEach(el=>{ el.style.width = el.getAttribute('data-width'); });
+  }));
 }
 
-function formatName(full) {
-  // Italic anything in parentheses
-  return full.replace(/\(([^)]+)\)/g, '<em>($1)</em>');
+function palaItem(x, barC, pcC, custom) {
+  return `<div class="palabra-item">
+    <div class="palabra-header">
+      <span class="palabra-name${custom?' custom':''}">${x.p}</span>
+      <span class="palabra-right">
+        <span class="palabra-pct ${pcC}">${x.v}%</span>
+        <span class="palabra-n">(${x.n})</span>
+      </span>
+    </div>
+    <div class="bar-track"><div class="bar-fill ${barC}" data-width="${x.v}%" style="width:0%"></div></div>
+  </div>`;
 }
 
-// Show first career
+function fmt(s) { return s.replace(/\(([^)]+)\)/g,'<em>($1)</em>'); }
+
 showCareer('Diseño de Moda');
 </script>
 </body>
