@@ -145,26 +145,8 @@
 <script>
 const STANDARD = ['Joven','Tradicional','Seria','Creativa','Internacional','Profesional','Amigable'];
 const FCOLORS   = ['#f5a623','#e8528a','#4ecdc4','#a78bfa','#64b5f6','#81c784','#ffb74d'];
-
-// Color fijo por palabra (independiente del orden en cada carrera)
-const PALABRA_BAR = {
-  'Creativa':      'pbar-0',  // naranja
-  'Joven':         'pbar-3',  // violeta
-  'Profesional':   'pbar-5',  // verde
-  'Amigable':      'pbar-2',  // turquesa
-  'Internacional': 'pbar-4',  // azul
-  'Seria':         'pbar-1',  // rosa
-  'Tradicional':   'pbar-6',  // amarillo
-};
-const PALABRA_PC = {
-  'Creativa':      'pc-0',
-  'Joven':         'pc-3',
-  'Profesional':   'pc-5',
-  'Amigable':      'pc-2',
-  'Internacional': 'pc-4',
-  'Seria':         'pc-1',
-  'Tradicional':   'pc-6',
-};
+const PBARS     = ['pbar-0','pbar-1','pbar-2','pbar-3','pbar-4','pbar-5','pbar-6'];
+const PCS       = ['pc-0','pc-1','pc-2','pc-3','pc-4','pc-5','pc-6'];
 
 const data = {
   "Actuación Profesional":{full:"Actuación Profesional (Actor Profesional)",n:8,avg_age:21.5,pct_otra:50.0,pct_conoce:25.0,pct_recom:12.5,
@@ -287,9 +269,15 @@ function showCareer(key) {
   const d = data[key];
   const isSmall = d.n < 15;
 
-  // Solo palabras estándar, con color fijo por palabra
+  // Separate standard vs custom palabras
   const stdP = d.palabras.filter(x => STANDARD.includes(x.p)).sort((a,b) => b.v - a.v);
-  let palHTML = stdP.map(x => palaItem(x, PALABRA_BAR[x.p]||'pbar-o', PALABRA_PC[x.p]||'pc-o', false)).join('');
+  const cusP = d.palabras.filter(x => !STANDARD.includes(x.p));
+
+  let palHTML = stdP.map((x,i) => palaItem(x, PBARS[i]||'pbar-o', PCS[i]||'pc-o', false)).join('');
+  if (cusP.length) {
+    palHTML += `<div class="palabras-divider">otras respuestas</div>`;
+    palHTML += cusP.map(x => palaItem(x,'pbar-o','pc-o',true)).join('');
+  }
 
   mainEl.innerHTML = `
     <div class="career-header">
